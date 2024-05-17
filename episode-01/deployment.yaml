@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode01-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode01
+  template:
+    metadata:
+      labels:
+        app: episode01
+    spec:
+      containers:
+      - name: episode01-container
+        image: i211182/image1:latest
+        ports:
+        - containerPort: 3000
+        - containerPort: 8000
+      nodeSelector:
+        kubernetes.io/hostname: assignment03

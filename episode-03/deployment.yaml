@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode03-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode03
+  template:
+    metadata:
+      labels:
+        app: episode03
+    spec:
+      containers:
+      - name: episode03-container
+        image: i211182/image3:latest
+        ports:
+        - containerPort: 3002
+        - containerPort: 8002
+      nodeSelector:
+        kubernetes.io/hostname: minikube-m02
